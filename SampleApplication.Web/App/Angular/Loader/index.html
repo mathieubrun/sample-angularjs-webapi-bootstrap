@@ -1,0 +1,64 @@
+﻿<div sample-menu></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-default" ng-click="reload()">Reload</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div loader="dataError400">
+                        This should not appear
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div loader="dataError500">
+                        This should not appear
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <div loader="dataDelayed">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="client in dataDelayed">
+                                <td>{{client.LastName}}</td>
+                                <td>{{client.FirstName}}</td>
+                                <td>{{client.Company}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div tabset>
+                <div tab heading="loader.directive.js">
+                    <div show-source url="app/angular/loader/loader.directive.js">
+                    </div>
+                </div>
+                <div tab heading="loader.html">
+                    <div show-source url="app/angular/loader/loader.html">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>

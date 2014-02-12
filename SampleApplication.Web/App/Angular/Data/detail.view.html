@@ -1,0 +1,40 @@
+﻿<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="inputLastName" class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+            <span class="form-control">{{data.LastName}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputFirstName" class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-10">
+            <span class="form-control">{{data.FirstName}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputCompany" class="col-sm-2 control-label">Company</label>
+        <div class="col-sm-10">
+            <span class="form-control">{{data.Company}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputRegistrationDate" class="col-sm-2 control-label">Registration date</label>
+        <div class="col-sm-10">
+            <span class="form-control">{{data.RegistrationDate | date}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Recommandations</label>
+        <div class="col-sm-10">
+            <ul>
+                <li ng-repeat="recommandation in data.Recommandations | orderBy:'Title'">{{recommandation.Title}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" ng-click="edit()" class="btn">Edit</button>
+            <button type="button" ng-click="back()" class="btn btn-default">Back</button>
+        </div>
+    </div>
+</form>
