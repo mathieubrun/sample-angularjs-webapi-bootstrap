@@ -1,0 +1,43 @@
+﻿{
+  "output": "Warning",
+  "ignore": [
+    "\\Scripts\\angular-mocks.js",
+    "\\Scripts\\angular-resource.js",
+    "\\Scripts\\angular-resource.min.js",
+    "\\Scripts\\angular-route.js",
+    "\\Scripts\\angular-route.min.js",
+    "\\Scripts\\angular.js",
+    "\\Scripts\\angular.min.js",
+    "\\Scripts\\bootstrap.js",
+    "\\Scripts\\bootstrap.min.js",
+    "\\Scripts\\jquery-2.1.0.intellisense.js",
+    "\\Scripts\\jquery-2.1.0.min.js",
+    "\\Scripts\\jquery-2.1.0.js",
+    "\\Scripts\\jquery-ui-1.10.4.js",
+    "\\Scripts\\jquery-ui-1.10.4.min.js",
+    "\\Scripts\\ui-bootstrap-0.10.0.js",
+    "\\Scripts\\ui-bootstrap-0.10.0.min.js",
+    "\\Scripts\\ui-bootstrap-tpls-0.10.0.js",
+    "\\Scripts\\ui-bootstrap-tpls-0.10.0.min.js",
+    "\\Scripts\\underscore.js",
+    "\\Scripts\\underscore.min.js",
+    "\\Scripts\\ui-date.js"
+  ],
+  "options": {
+    "predef": {
+      "afterEach": false,
+      "beforeEach": false,
+      "inject": false,
+      "it": false,
+      "describe": false,
+      "module": false,
+      "_": false,
+      "angular": false,
+      "jQuery": false
+    },
+    "nomen": true
+  },
+  "runOnSave": false,
+  "runOnBuild": false,
+  "cancelBuild": false
+}
