@@ -17,6 +17,10 @@ namespace SampleApplication.Web
                 .Include("~/Scripts/ui-bootstrap-{version}.js")
                 );
 
+            bundles.Add(new ScriptBundle("~/app/commonTests")
+                .Include("~/Scripts/angular-mocks.js")
+                );
+
             bundles.Add(new ScriptBundle("~/app/sampleApplication")
                .Include("~/app/app.js")
                .Include("~/app/common/common.js")
@@ -24,6 +28,14 @@ namespace SampleApplication.Web
                .Include("~/app/angular/data/data.js")
                .Include("~/app/angular/loader/loader.js")
                .Include("~/app/angular/loader/loader.directive.js"));
+
+            bundles.Add(new ScriptBundle("~/app/sampleApplicationTests")
+               .Include("~/app/app.spec.js")
+               .Include("~/app/common/common.spec.js")
+               .Include("~/app/angular/caching/cacheInterceptor.spec.js")
+               .Include("~/app/angular/data/data.spec.js")
+               .Include("~/app/angular/loader/loader.spec.js")
+               .Include("~/app/angular/loader/loader.directive.spec.js"));
 
             bundles.Add(new StyleBundle("~/css/common")
                 .Include("~/content/bootstrap.css")

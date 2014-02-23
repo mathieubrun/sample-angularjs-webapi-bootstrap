@@ -144,6 +144,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App\Angular\Data\detail.view.html" />
     <Content Include="App\Angular\Data\detail.edit.html" />
+    <Content Include="App\Angular\Loader\loader.spec.js" />
     <Content Include="App\Common\source.html" />
     <Content Include="App\Angular\Loader\loader.directive.js" />
     <Content Include="App\app.js" />
@@ -253,6 +254,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="App\Angular\Tests\Index.aspx" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />

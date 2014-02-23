@@ -3,7 +3,7 @@
 /*
 This module 
 */
-angular.module('SampleApplication.Angular.Data', ['ngResource'])
+angular.module('SampleApplication.Angular.Data', ['ngResource', 'ngRoute'])
     .controller('DatasController', ['$scope', '$resource', function ($scope, $resource) {
         var clients = $resource("api/clients");
 
@@ -18,6 +18,7 @@ angular.module('SampleApplication.Angular.Data', ['ngResource'])
         var recommandations = $resource("api/recommandations");
 
         $scope.recommandations = recommandations.query();
+
         $scope.data = clients.get({ id: $routeParams.id }, function (success) {
             $scope.recommandations.$promise.then(function () {
                 _.each(success.Recommandations, function (reco) {

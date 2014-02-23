@@ -9,6 +9,7 @@ angular.module('SampleApplication.Angular.Loader')
                 source: '=loader'
             },
             link: function (scope, elem, attrs) {
+                scope.status = 200;
 
                 scope.$watch("source", function (val) {
                     scope.status = 0;
