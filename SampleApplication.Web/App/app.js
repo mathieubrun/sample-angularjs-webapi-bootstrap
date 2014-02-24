@@ -16,7 +16,7 @@
         'SampleApplication.Angular.Data',
         'SampleApplication.Angular.Loader'
     ])
-        .config(['$routeProvider', '$provide', '$httpProvider', function ($routeProvider, $httpProvider) {
+        .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
             $routeProvider.when(
                 '/home',
