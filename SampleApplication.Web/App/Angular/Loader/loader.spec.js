@@ -1,38 +1,42 @@
-﻿describe('SampleApplication.Angular.Loader', function () {
+﻿(function () {
+    'use strict';
 
-    beforeEach(module('SampleApplication.Angular.Loader'));
+    describe('SampleApplication.Angular.Loader', function () {
 
-    // Load the myApp module, which cont
-    describe('LoaderController', function () {
+        beforeEach(module('SampleApplication.Angular.Loader'));
 
-        var scope, $httpBackend;
+        // Load the myApp module, which cont
+        describe('LoaderController', function () {
 
-        beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
-            $httpBackend = _$httpBackend_;
-            scope = _$rootScope_.$new();
+            var scope, $httpBackend, createController;
 
-            createController = function () {
-                return _$controller_('LoaderController', { '$scope': scope });
-            };
-        }));
+            beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
+                $httpBackend = _$httpBackend_;
+                scope = _$rootScope_.$new();
 
-        it('must call api/clients/delay and api/clients/delay/error/:error on creation', function () {
-            // arrange
-            $httpBackend.expectGET('api/clients/delay').respond([]);
-            $httpBackend.expectGET('api/clients/error/400').respond([]);
-            $httpBackend.expectGET('api/clients/error/500').respond([]);
+                createController = function () {
+                    return _$controller_('LoaderController', { '$scope': scope });
+                };
+            }));
 
-            // act
-            var controller = createController();
+            it('must call api/clients/delay and api/clients/delay/error/:error on creation', function () {
+                // arrange
+                $httpBackend.expectGET('api/clients/delay').respond([]);
+                $httpBackend.expectGET('api/clients/error/400').respond([]);
+                $httpBackend.expectGET('api/clients/error/500').respond([]);
 
-            // assert
-            $httpBackend.flush();
-        });
+                // act
+                createController();
 
-        afterEach(function () {
-            $httpBackend.verifyNoOutstandingExpectation();
-            $httpBackend.verifyNoOutstandingRequest();
-            scope.$destroy();
+                // assert
+                $httpBackend.flush();
+            });
+
+            afterEach(function () {
+                $httpBackend.verifyNoOutstandingExpectation();
+                $httpBackend.verifyNoOutstandingRequest();
+                scope.$destroy();
+            });
         });
     });
-});
+}());

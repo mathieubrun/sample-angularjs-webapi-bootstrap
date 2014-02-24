@@ -21,7 +21,11 @@
     "\\Scripts\\ui-bootstrap-tpls-0.10.0.min.js",
     "\\Scripts\\underscore.js",
     "\\Scripts\\underscore.min.js",
-    "\\Scripts\\ui-date.js"
+    "\\Scripts\\ui-date.js",
+    "\\App\\Angular\\Tests\\lib\\jasmine-2.0.0\\boot.js",
+    "\\App\\Angular\\Tests\\lib\\jasmine-2.0.0\\console.js",
+    "\\App\\Angular\\Tests\\lib\\jasmine-2.0.0\\jasmine-html.js",
+    "\\App\\Angular\\Tests\\lib\\jasmine-2.0.0\\jasmine.js"
   ],
   "options": {
     "predef": {
@@ -31,6 +35,7 @@
       "it": false,
       "describe": false,
       "module": false,
+      "expect": false,
       "_": false,
       "angular": false,
       "jQuery": false

@@ -1,73 +1,77 @@
-﻿describe('SampleApplication.Angular.Data', function () {
+﻿(function () {
+    'use strict';
 
-    beforeEach(module('SampleApplication.Angular.Data'));
+    describe('SampleApplication.Angular.Data', function () {
 
-    describe('DatasController', function () {
+        beforeEach(module('SampleApplication.Angular.Data'));
 
-        var scope, $httpBackend, createController;
+        describe('DatasController', function () {
 
-        beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
-            $httpBackend = _$httpBackend_;
-            scope = _$rootScope_.$new();
+            var scope, $httpBackend, createController;
 
-            createController = function () {
-                return _$controller_('DatasController', { '$scope': scope });
-            };
-        }));
+            beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
+                $httpBackend = _$httpBackend_;
+                scope = _$rootScope_.$new();
 
-        it('must call api/clients on creation', function () {
-            // arrange
-            $httpBackend.expectGET('api/clients').respond([]);
+                createController = function () {
+                    return _$controller_('DatasController', { '$scope': scope });
+                };
+            }));
 
-            // act
-            var controller = createController();
+            it('must call api/clients on creation', function () {
+                // arrange
+                $httpBackend.expectGET('api/clients').respond([]);
 
-            // assert
-            $httpBackend.flush();
-        });
+                // act
+                createController();
 
-        afterEach(function () {
-            $httpBackend.verifyNoOutstandingExpectation();
-            $httpBackend.verifyNoOutstandingRequest();
-        });
-    });
-
-    describe('DataController', function () {
-
-        var scope, $httpBackend, createController;
-
-        beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
-            $httpBackend = _$httpBackend_;
-
-            $httpBackend.expectGET('api/recommandations').respond([]);
-            $httpBackend.expectGET('api/clients/123').respond({});
-
-            scope = _$rootScope_.$new();
-
-            createController = function () {
-                var ctrl = _$controller_('DataController', { '$scope': scope, $routeParams: { id: 123 } });
-
+                // assert
                 $httpBackend.flush();
+            });
 
-                return ctrl;
-            };
-        }));
-
-        it('$scope.cancel must set model.IsEditing to false', function () {
-            // arrange
-            var controller = createController();
-
-            // act
-            scope.cancel();
-
-            // assert
-            expect(scope.model.IsEditing).toBe(false);
+            afterEach(function () {
+                $httpBackend.verifyNoOutstandingExpectation();
+                $httpBackend.verifyNoOutstandingRequest();
+            });
         });
 
-        afterEach(function () {
-            $httpBackend.verifyNoOutstandingExpectation();
-            $httpBackend.verifyNoOutstandingRequest();
-            scope.$destroy();
+        describe('DataController', function () {
+
+            var scope, $httpBackend, createController;
+
+            beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
+                $httpBackend = _$httpBackend_;
+
+                $httpBackend.expectGET('api/recommandations').respond([]);
+                $httpBackend.expectGET('api/clients/123').respond({});
+
+                scope = _$rootScope_.$new();
+
+                createController = function () {
+                    var ctrl = _$controller_('DataController', { '$scope': scope, $routeParams: { id: 123 } });
+
+                    $httpBackend.flush();
+
+                    return ctrl;
+                };
+            }));
+
+            it('$scope.cancel must set model.IsEditing to false', function () {
+                // arrange
+                createController();
+
+                // act
+                scope.cancel();
+
+                // assert
+                expect(scope.model.IsEditing).toBe(false);
+            });
+
+            afterEach(function () {
+                $httpBackend.verifyNoOutstandingExpectation();
+                $httpBackend.verifyNoOutstandingRequest();
+                scope.$destroy();
+            });
         });
     });
-});
+}());
