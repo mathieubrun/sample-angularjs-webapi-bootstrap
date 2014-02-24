@@ -2,7 +2,6 @@
 
     beforeEach(module('SampleApplication.Angular.Data'));
 
-    // Load the myApp module, which cont
     describe('DatasController', function () {
 
         var scope, $httpBackend, createController;
@@ -33,7 +32,6 @@
         });
     });
 
-    // Load the myApp module, which cont
     describe('DataController', function () {
 
         var scope, $httpBackend, createController;
@@ -69,6 +67,7 @@
         afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
+            scope.$destroy();
         });
     });
 });

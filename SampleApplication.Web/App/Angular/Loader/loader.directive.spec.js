@@ -2,7 +2,6 @@
 
     beforeEach(module('SampleApplication.Angular.Loader'));
 
-    // Load the myApp module, which cont
     describe('loader', function () {
 
         var scope, element;
@@ -37,10 +36,6 @@
             }));
 
             it('must display content immediately', function () {
-                // arrange
-                // act
-
-
                 // assert
                 expect(element.innerText).toBe(expectedContent);
             });
@@ -57,14 +52,11 @@
             }));
 
             it('must display loading message', function () {
-                // arrange
-                // act
                 // assert
                 expect(element.innerText).toBe("Loading");
             });
 
             it('must display content when promise is resolved', function () {
-                // arrange
                 // act
                 p.resolve();
                 scope.$apply();
@@ -75,7 +67,9 @@
         });
 
         afterEach(function () {
-            scope.$destroy(); //disables unknown option work during destruction
+            $httpBackend.verifyNoOutstandingExpectation();
+            $httpBackend.verifyNoOutstandingRequest();
+            scope.$destroy(); 
         });
     });
 });

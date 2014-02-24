@@ -147,6 +147,12 @@
     <Content Include="App\Angular\Data\detail.edit.html" />
     <Content Include="App\Angular\Loader\loader.directive.spec.js" />
     <Content Include="App\Angular\Loader\loader.spec.js" />
+    <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\boot.js" />
+    <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\console.js" />
+    <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\jasmine-html.js" />
+    <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\jasmine.css" />
+    <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\jasmine.js" />
+    <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\jasmine_favicon.png" />
     <Content Include="App\Common\source.html" />
     <Content Include="App\Angular\Loader\loader.directive.js" />
     <Content Include="App\app.js" />

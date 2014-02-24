@@ -5,7 +5,7 @@
     // Load the myApp module, which cont
     describe('LoaderController', function () {
 
-        var $scope, $httpBackend;
+        var scope, $httpBackend;
 
         beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
             $httpBackend = _$httpBackend_;
@@ -32,6 +32,7 @@
         afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
+            scope.$destroy();
         });
     });
 });
