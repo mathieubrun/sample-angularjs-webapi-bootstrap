@@ -145,6 +145,7 @@
     <Content Include="App\Angular\Data\data.spec.js" />
     <Content Include="App\Angular\Data\detail.view.html" />
     <Content Include="App\Angular\Data\detail.edit.html" />
+    <Content Include="App\Angular\Loader\loader.directive.spec.js" />
     <Content Include="App\Angular\Loader\loader.spec.js" />
     <Content Include="App\Common\source.html" />
     <Content Include="App\Angular\Loader\loader.directive.js" />

@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('SampleApplication.Angular.Loader')
-    .directive('loader', ['$q', function ($q) {
+    .directive('loader', [function () {
         return {
             transclude: true,
             templateUrl: 'app/angular/loader/loader.html',
@@ -12,12 +12,17 @@ angular.module('SampleApplication.Angular.Loader')
                 scope.status = 200;
 
                 scope.$watch("source", function (val) {
-                    scope.status = 0;
-                    val.$promise.then(function (success) {
+                    if (val && val.$promise) {
+                        scope.status = 0;
+                        val.$promise.then(function (success) {
+                            scope.status = 200;
+                        }, function (err) {
+                            scope.status = err.status;
+                        });
+                    }
+                    else {
                         scope.status = 200;
-                    }, function (err) {
-                        scope.status = err.status;
-                    });
+                    }
                 });
             }
         }
