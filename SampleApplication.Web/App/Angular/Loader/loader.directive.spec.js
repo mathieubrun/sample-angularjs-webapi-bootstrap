@@ -41,6 +41,11 @@
                     // assert
                     expect(element.innerText).toBe(expectedContent);
                 });
+
+                it('scope.status must be 200', function () {
+                    // assert
+                    expect(element.isolatedScope().status).toBe(200);
+                });
             });
 
             describe('when data is a promise', function () {
@@ -58,13 +63,29 @@
                     expect(element.innerText).toBe("Loading");
                 });
 
-                it('must display content when promise is resolved', function () {
-                    // act
-                    p.resolve();
-                    scope.$apply();
-
+                it('scope.status must be 0', function () {
                     // assert
-                    expect(element.innerText).toBe(expectedContent);
+                    expect(element.isolatedScope().status).toBe(0);
+                });
+
+                describe('when promise is resolved', function () {
+
+                    beforeEach(function () {
+                        // act
+                        p.resolve();
+                        scope.$apply();
+                    });
+
+                    it('must display content ', function () {
+
+                        // assert
+                        expect(element.innerText).toBe(expectedContent);
+                    });
+
+                    it('scope.status must be 200', function () {
+                        // assert
+                        expect(element.isolatedScope().status).toBe(200);
+                    });
                 });
             });
 
