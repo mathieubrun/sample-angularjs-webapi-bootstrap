@@ -43,8 +43,10 @@
                 });
 
                 it('scope.status must be 200', function () {
+                    var s = element.isolatedScope();
+
                     // assert
-                    expect(element.isolatedScope().status).toBe(200);
+                    expect(s.status).toBe(200);
                 });
             });
 
@@ -64,8 +66,10 @@
                 });
 
                 it('scope.status must be 0', function () {
+                    var s = element.isolatedScope();
+
                     // assert
-                    expect(element.isolatedScope().status).toBe(0);
+                    expect(s.status).toBe(0);
                 });
 
                 describe('when promise is resolved', function () {
@@ -77,14 +81,15 @@
                     });
 
                     it('must display content ', function () {
-
                         // assert
                         expect(element.innerText).toBe(expectedContent);
                     });
 
                     it('scope.status must be 200', function () {
+                        var s = element.isolatedScope();
+
                         // assert
-                        expect(element.isolatedScope().status).toBe(200);
+                        expect(s.status).toBe(200);
                     });
                 });
             });
