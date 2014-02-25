@@ -7,7 +7,7 @@
 
         describe('loader', function () {
 
-            var scope, element,
+            var scope, directiveScope, element,
                 $compile, $httpBackend,
                 expectedContent = "expected";
 
@@ -29,6 +29,8 @@
 
                 compile('<div loader="data">' + expectedContent + '</div>');
                 $httpBackend.flush();
+
+                directiveScope = jQuery(element).isolateScope();
             }));
 
             describe('when data is not a promise', function () {
@@ -43,10 +45,8 @@
                 });
 
                 it('scope.status must be 200', function () {
-                    var s = element.isolatedScope();
-
                     // assert
-                    expect(s.status).toBe(200);
+                    expect(directiveScope.status).toBe(200);
                 });
             });
 
@@ -66,10 +66,8 @@
                 });
 
                 it('scope.status must be 0', function () {
-                    var s = element.isolatedScope();
-
                     // assert
-                    expect(s.status).toBe(0);
+                    expect(directiveScope.status).toBe(0);
                 });
 
                 describe('when promise is resolved', function () {
@@ -86,10 +84,29 @@
                     });
 
                     it('scope.status must be 200', function () {
-                        var s = element.isolatedScope();
-
                         // assert
-                        expect(s.status).toBe(200);
+                        expect(directiveScope.status).toBe(200);
+                    });
+                });
+
+                describe('when promise fails', function () {
+
+                    var errorCode = 501;
+
+                    beforeEach(function () {
+                        // act
+                        p.reject({ status: errorCode });
+                        scope.$apply();
+                    });
+
+                    it('must display content ', function () {
+                        // assert
+                        expect(element.innerText).toBe("Error from server : " + errorCode);
+                    });
+
+                    it('scope.status must be errorCode', function () {
+                        // assert
+                        expect(directiveScope.status).toBe(errorCode);
                     });
                 });
             });
