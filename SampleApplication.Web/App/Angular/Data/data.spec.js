@@ -41,13 +41,14 @@
         describe('DataController', function () {
 
             // the easy way to get some json data is to capture and copy paste it using chrome network tab
-            var scope, $httpBackend, createController,
+            var scope, $httpBackend, $location, createController,
                 client = { "Id": "155f9a89-54b2-4a9c-86c3-f4b1eec60332", "RegistrationDate": "2014-02-24T22:27:24.5125825+01:00", "Company": "123 Warehousing", "FirstName": "Adrien", "LastName": "Adam", "Recommandations": [{ "Id": "107e2d03-ebea-45ea-8301-b0a9b7f42a07", "Title": "Cars" }, { "Id": "e6c0c846-c336-4a61-b080-fde0cb347f71", "Title": "Bikes" }] },
                 recommandations = [{ "Id": "107e2d03-ebea-45ea-8301-b0a9b7f42a07", "Title": "Cars" }, { "Id": "e6c0c846-c336-4a61-b080-fde0cb347f71", "Title": "Bikes" }, { "Id": "6dea8ccc-82c7-4890-81c7-518069079351", "Title": "Boats" }];
 
             // this will get executed before each "it"
-            beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_) {
+            beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$controller_, _$location_) {
                 $httpBackend = _$httpBackend_;
+                $location = _$location_;
 
                 // the when methods will just make sure that the mocked backend returns some fake data, without expectations that will be tested later
                 $httpBackend.when('GET', 'api/recommandations').respond(recommandations);
@@ -104,8 +105,7 @@
                         // act
                         scope.edit();
                     });
-
-
+                    
                     it('must set model.IsEditing to true', function () {
                         // assert
                         expect(scope.model.IsEditing).toBe(true);
@@ -118,6 +118,23 @@
                         // assert
                         expect(scope.data.Id).toEqual(scope.newData.Id);
                         expect(scope.data.FirstName).not.toEqual(scope.newData.FirstName);
+                    });
+                });
+
+                describe('$scope.back', function () {
+                    var spyOnLocationPath;
+
+                    beforeEach(function () {
+                        // a spy enables to intercept method calls on an object
+                        spyOnLocationPath = spyOn($location, 'path');
+
+                        // act
+                        scope.back();
+                    });
+
+                    it('must set location to /angular/data/remote', function () {
+                        // assert
+                        expect(spyOnLocationPath).toHaveBeenCalledWith('/angular/data/remote');
                     });
                 });
             });
