@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    describe('Those tests will be related to JS files located in SampleApplication.Angular.Data module', function () {
+    describe('In module SampleApplication.Angular.Data module', function () {
 
         // this module need to be loaded
         // it is important to load just this module, so if it is missing dependencies, they will be caught in the following tests

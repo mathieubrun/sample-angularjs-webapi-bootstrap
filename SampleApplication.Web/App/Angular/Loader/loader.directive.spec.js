@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    describe('SampleApplication.Angular.Loader', function () {
+    describe('In module SampleApplication.Angular.Loader', function () {
 
         beforeEach(module('SampleApplication.Angular.Loader'));
 
