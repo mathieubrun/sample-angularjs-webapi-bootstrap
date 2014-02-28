@@ -1,0 +1,20 @@
+﻿<div sample-menu></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" ng-controller="FirstController">
+            <input type="text" ng-model="msg" />
+            <button class="btn btn-default" ng-click="write(msg)">Write</button>
+        </div>
+        <div class="col-xs-6" ng-controller="SecondController">
+            <button class="btn btn-default" ng-click="read()">Read</button>
+            <ul>
+                <li ng-repeat="m in messages">{{m.date}} {{m.msg}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

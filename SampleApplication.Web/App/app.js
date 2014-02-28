@@ -14,6 +14,7 @@
         'SampleApplication.Common',
         'SampleApplication.Config',
         'SampleApplication.Angular.Data',
+        'SampleApplication.Angular.Services',
         'SampleApplication.Angular.Loader'
     ])
         .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
@@ -57,10 +58,9 @@
             );
 
             $routeProvider.when(
-                '/angular/directives',
+                '/angular/services',
                 {
-                    templateUrl: '/app/angular/directives/index.html',
-                    controller: 'DirectivesController'
+                    templateUrl: '/app/angular/services/index.html'
                 }
             );
 

@@ -147,6 +147,8 @@
     <Content Include="App\Angular\Data\detail.edit.html" />
     <Content Include="App\Angular\Loader\loader.directive.spec.js" />
     <Content Include="App\Angular\Loader\loader.spec.js" />
+    <Content Include="App\Angular\Services\services.js" />
+    <Content Include="App\Angular\Services\index.html" />
     <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\boot.js" />
     <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\console.js" />
     <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\jasmine-html.js" />
