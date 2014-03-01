@@ -8,16 +8,15 @@ namespace SampleApplication.Web.Data
 {
     public class DataProvider : IDataProvider
     {
+        private static readonly object Locker = new object();
         private static IEnumerable<Client> clients;
         private static IEnumerable<Recommandation> recommandations;
-        private static readonly object locker = new object();
 
         public IEnumerable<Recommandation> GetRecommandations()
         {
             if (recommandations == null)
             {
-
-                lock (locker)
+                lock (Locker)
                 {
                     if (recommandations == null)
                     {
@@ -51,7 +50,7 @@ namespace SampleApplication.Web.Data
                     .For(x => x.RegistrationDate)
                         .CreateUsing(() => DateTime.Now)
                     .For(x => x.Recommandations)
-                        .CreateUsing(() => GetRecommandations().OrderBy(x => Guid.NewGuid()).Take(2).ToArray())
+                        .CreateUsing(() => this.GetRecommandations().OrderBy(x => Guid.NewGuid()).Take(2).ToArray())
                     .Generate(20)
 
                 .ToList();

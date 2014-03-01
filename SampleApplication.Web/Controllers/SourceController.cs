@@ -20,7 +20,7 @@ namespace SampleApplication.Web.Controllers
             var lines = File.ReadAllLines(HostingEnvironment.MapPath("~/" + url));
             var file = string.Join(Environment.NewLine, lines);
 
-            return Ok(new
+            return this.Ok(new
             {
                 File = url,
                 Content = file

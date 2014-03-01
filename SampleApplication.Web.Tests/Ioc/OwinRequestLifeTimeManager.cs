@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SampleApplication.Web.Tests.Ioc
 {
-    /// <remarks>
+    /// <summary>
     /// Inspired from : https://github.com/castleproject/Windsor/blob/master/src/Castle.Windsor/MicroKernel/Lifestyle/PerWebRequestLifestyleModule.cs
-    /// </remarks>
+    /// </summary>
     public class OwinRequestLifeTimeManager : OwinMiddleware
     {
         private readonly IWindsorContainer container;
@@ -21,7 +21,7 @@ namespace SampleApplication.Web.Tests.Ioc
 
         public override Task Invoke(IOwinContext context)
         {
-            using (new CallContextLifetimeScope(container))
+            using (new CallContextLifetimeScope(this.container))
             {
                 // subsequent middlewares are executed inside this scope
                 return Next.Invoke(context);

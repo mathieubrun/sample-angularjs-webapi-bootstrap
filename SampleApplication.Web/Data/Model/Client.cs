@@ -20,7 +20,7 @@ namespace SampleApplication.Web.Data.Models
         [Required]
         public string LastName { get; set; }
 
-        [MaxLength(2, ErrorMessage="Please choose 2 recommandations at maximum")]
+        [MaxLength(2, ErrorMessage = "Please choose 2 recommandations at maximum")]
         public Recommandation[] Recommandations { get; set; }
     }
 }

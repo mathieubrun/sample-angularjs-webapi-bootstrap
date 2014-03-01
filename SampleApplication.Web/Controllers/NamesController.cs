@@ -46,17 +46,17 @@ namespace SampleApplication.Web.Controllers
             if (!Regex.IsMatch(prefix, PrefixRegex))
             {
                 // 400 : see : http://localhost:60000/api/names/123
-                return BadRequest();
+                return this.BadRequest();
             }
 
             if (!names.Any())
             {
                 // 404 : see : http://localhost:60000/api/names/thisIsClearlyNotAName
-                return NotFound();
+                return this.NotFound();
             }
 
             // 200
-            return Ok(names);
+            return this.Ok(names);
         }
 
         [HttpGet]

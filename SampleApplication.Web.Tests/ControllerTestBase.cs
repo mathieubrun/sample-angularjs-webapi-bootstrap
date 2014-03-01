@@ -16,17 +16,16 @@ namespace SampleApplication.Web.Tests
     [TestClass]
     public class ControllerTestBase
     {
-        protected static readonly string baseAddress = "http://localhost:9000/";
-        protected static IDisposable app;
+        protected static readonly string BaseAddress = "http://localhost:9000/";
+        private static IDisposable app;
 
         /// <summary>
         /// Start the self hosted server once per assembly
         /// </summary>
-        /// <param name="context"></param>
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext context)
         {
-            app = WebApp.Start<Startup>(baseAddress);
+            app = WebApp.Start<Startup>(BaseAddress);
         }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace SampleApplication.Web.Tests
         {
             using (var client = new HttpClient())
             {
-                var response = client.GetAsync(baseAddress + url).Result;
+                var response = client.GetAsync(BaseAddress + url).Result;
 
                 var str = response.Content.ReadAsStringAsync().Result;
 
@@ -65,7 +64,7 @@ namespace SampleApplication.Web.Tests
         {
             using (var client = new HttpClient())
             {
-                var response = client.GetAsync(baseAddress + url).Result;
+                var response = client.GetAsync(BaseAddress + url).Result;
 
                 var str = response.Content.ReadAsStringAsync().Result;
 

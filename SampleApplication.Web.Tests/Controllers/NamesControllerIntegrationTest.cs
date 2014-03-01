@@ -14,9 +14,9 @@ namespace SampleApplication.Web.Tests.Controllers
         {
             var value = StaticData.FirstNames.First();
 
-            AssertStatus("api/names/" + value, HttpStatusCode.OK);
-            AssertStatus("api/names/" + value + "/ienumerable", HttpStatusCode.OK);
-            AssertStatus("api/names/" + value + "/httpresponsemessage", HttpStatusCode.OK);
+            this.AssertStatus("api/names/" + value, HttpStatusCode.OK);
+            this.AssertStatus("api/names/" + value + "/ienumerable", HttpStatusCode.OK);
+            this.AssertStatus("api/names/" + value + "/httpresponsemessage", HttpStatusCode.OK);
         }
 
         [TestMethod]
@@ -35,17 +35,17 @@ namespace SampleApplication.Web.Tests.Controllers
         [TestMethod]
         public void All_methods_with_inexistant_values_must_return_NotFound()
         {
-            AssertStatus("api/names/thisIsNotAName", HttpStatusCode.NotFound);
-            AssertStatus("api/names/thisIsNotAName/ienumerable", HttpStatusCode.NotFound);
-            AssertStatus("api/names/thisIsNotAName/httpresponsemessage", HttpStatusCode.NotFound);
+            this.AssertStatus("api/names/thisIsNotAName", HttpStatusCode.NotFound);
+            this.AssertStatus("api/names/thisIsNotAName/ienumerable", HttpStatusCode.NotFound);
+            this.AssertStatus("api/names/thisIsNotAName/httpresponsemessage", HttpStatusCode.NotFound);
         }
 
         [TestMethod]
         public void All_methods_with_invalid_values_must_return_BadRequest()
         {
-            AssertStatus("api/names/1", HttpStatusCode.BadRequest);
-            AssertStatus("api/names/1/ienumerable", HttpStatusCode.BadRequest);
-            AssertStatus("api/names/1/httpresponsemessage", HttpStatusCode.BadRequest);
+            this.AssertStatus("api/names/1", HttpStatusCode.BadRequest);
+            this.AssertStatus("api/names/1/ienumerable", HttpStatusCode.BadRequest);
+            this.AssertStatus("api/names/1/httpresponsemessage", HttpStatusCode.BadRequest);
         }
     }
 }

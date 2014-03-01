@@ -12,18 +12,10 @@ namespace SampleApplication.Web.Filters
     public class CustomHeaderAttribute : ActionFilterAttribute
     {
         /// <summary>
-        /// After the action got executed
-        /// </summary>
-        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
-        {
-            // add one random chuck norris fact to the response headers
-            actionExecutedContext.Response.Headers.Add("Chuck-Norris-Fact", Facts.OrderBy(x => Guid.NewGuid()).First());
-        }
-
-        /// <summary>
         /// Taken from http://www.chucknorrisfacts.com/chuck-norris-favorite-facts of course
         /// </summary>
-        private static readonly string[] Facts = { 
+        private static readonly string[] Facts =
+        { 
             "When the Boogeyman goes to sleep every night, he checks his closet for Chuck Norris.",
             "Chuck Norris doesn't read books. He stares them down until he gets the information he wants.",
             "There is no theory of evolution. Just a list of creatures Chuck Norris has allowed to live.",
@@ -43,5 +35,14 @@ namespace SampleApplication.Web.Filters
             "Remember the Soviet Union? They decided to quit after watching a DeltaForce marathon on Satellite TV.",
             "Contrary to popular belief, America is not a democracy, it is a Chucktatorship."                             
         };
+
+        /// <summary>
+        /// After the action got executed
+        /// </summary>
+        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
+        {
+            // add one random chuck norris fact to the response headers
+            actionExecutedContext.Response.Headers.Add("Chuck-Norris-Fact", Facts.OrderBy(x => Guid.NewGuid()).First());
+        }
     }
 }

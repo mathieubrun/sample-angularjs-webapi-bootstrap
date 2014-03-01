@@ -10,7 +10,7 @@ using System.Web.Http.Results;
 namespace SampleApplication.Web.Filters
 {
     /// <summary>
-    ///vThis one will put DataValidation errors in a neatly formatted bad request (see : http://localhost:60000/#/webapi/filters)
+    /// This one will put DataValidation errors in a neatly formatted bad request (see : http://localhost:60000/#/webapi/filters)
     /// </summary>
     public class DataValidationFilterAttribute : ActionFilterAttribute
     {
@@ -21,11 +21,14 @@ namespace SampleApplication.Web.Filters
         {
             if (!actionContext.ModelState.IsValid)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, actionContext.ModelState.Keys.Select(x => new
-                {
-                    Field = x,
-                    Errors = actionContext.ModelState[x].Errors.Select(y => y.ErrorMessage)
-                }));
+                actionContext.Response = actionContext.Request.CreateResponse(
+                    HttpStatusCode.BadRequest, 
+                    actionContext.ModelState.Keys.Select(
+                    x => new
+                    {
+                        Field = x,
+                        Errors = actionContext.ModelState[x].Errors.Select(y => y.ErrorMessage)
+                    }));
             }
         }
     }

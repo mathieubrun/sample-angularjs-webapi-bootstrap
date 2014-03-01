@@ -17,7 +17,7 @@ namespace SampleApplication.Web.Controllers
         [Route("authorize")]
         public IHttpActionResult TestAuthorize()
         {
-            return Ok();
+            return this.Ok();
         }
 
         [HttpGet]
@@ -25,7 +25,7 @@ namespace SampleApplication.Web.Controllers
         [Route("header")]
         public IHttpActionResult TestHeader()
         {
-            return Ok("test");
+            return this.Ok("test");
         }
     }
 }

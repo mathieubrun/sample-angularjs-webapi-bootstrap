@@ -1,11 +1,12 @@
-﻿using SampleApplication.Web.Data;
-using SampleApplication.Web.Data.Models;
-using SampleApplication.Web.Filters;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Web.Http;
+
+using SampleApplication.Web.Data;
+using SampleApplication.Web.Data.Models;
+using SampleApplication.Web.Filters;
 
 namespace SampleApplication.Web.Controllers
 {
@@ -34,7 +35,7 @@ namespace SampleApplication.Web.Controllers
         {
             var data = this.dataProvider.GetClients();
 
-            return Ok(data);
+            return this.Ok(data);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace SampleApplication.Web.Controllers
         {
             Thread.Sleep(2000);
 
-            return Ok(this.dataProvider.GetClients());
+            return this.Ok(this.dataProvider.GetClients());
         }
 
         [HttpGet]
@@ -66,7 +67,7 @@ namespace SampleApplication.Web.Controllers
         {
             Thread.Sleep(2000);
 
-            return StatusCode((HttpStatusCode)error);
+            return this.StatusCode((HttpStatusCode)error);
         }
 
         [HttpGet]
@@ -75,7 +76,7 @@ namespace SampleApplication.Web.Controllers
         {
             var client = this.dataProvider.GetClients().Single(x => x.Id == id);
 
-            return Ok(client);
+            return this.Ok(client);
         }
     }
 }

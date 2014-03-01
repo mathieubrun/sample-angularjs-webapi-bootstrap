@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Lifestyle.Scoped;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using SampleApplication.Web.Controllers;
 using SampleApplication.Web.Data;
 using System;
 using System.Collections.Concurrent;
@@ -28,9 +27,9 @@ namespace SampleApplication.Web
             container.Register(Component.For<IDataProvider, DataProvider>().LifestyleScoped<T>());
 
             // register components one by one 
-            // container.Register(Component.For<NamesController>().LifestyleScoped<T>());
-            // container.Register(Component.For<ClientsController>().LifestyleScoped<T>());
-            // container.Register(Component.For<RecommandationsController>().LifestyleScoped<T>());
+            //// container.Register(Component.For<NamesController>().LifestyleScoped<T>());
+            //// container.Register(Component.For<ClientsController>().LifestyleScoped<T>());
+            //// container.Register(Component.For<RecommandationsController>().LifestyleScoped<T>());
             
             // register by convention
             container.Register(Classes.FromThisAssembly().BasedOn<ApiController>().LifestyleScoped<T>());
@@ -38,9 +37,9 @@ namespace SampleApplication.Web
             return container;
         }
 
-        /// <remarks>
+        /// <summary>
         /// From : http://blog.ploeh.dk/2012/10/03/DependencyInjectioninASP.NETWebAPIwithCastleWindsor/
-        /// </remarks>
+        /// </summary>
         public class WindsorCompositionRoot : IHttpControllerActivator
         {
             private readonly IWindsorContainer container;
@@ -77,89 +76,99 @@ namespace SampleApplication.Web
             }
         }
 
-        /// <remarks>
+        /// <summary>
         /// From : https://github.com/WebApiContrib/WebApiContrib.IoC.CastleWindsor/blob/master/src/WebApiContrib.IoC.CastleWindsor/WindsorResolver.cs
-        /// </remarks>
+        /// </summary>
         public class WindsorResolver : IDependencyResolver
         {
-            private readonly IWindsorContainer _container;
+            private readonly IWindsorContainer container;
 
             public WindsorResolver(IWindsorContainer container)
             {
-                _container = container;
+                this.container = container;
             }
 
             public IDependencyScope BeginScope()
             {
-                return new WindsorDependencyScope(_container);
+                return new WindsorDependencyScope(this.container);
             }
 
             public void Dispose()
             {
-                _container.Dispose();
+                this.container.Dispose();
             }
 
             public object GetService(Type serviceType)
             {
-                if (!_container.Kernel.HasComponent(serviceType))
+                if (!this.container.Kernel.HasComponent(serviceType))
+                {
                     return null;
+                }
 
-                return _container.Resolve(serviceType);
+                return this.container.Resolve(serviceType);
             }
 
             public IEnumerable<object> GetServices(Type serviceType)
             {
-                if (!_container.Kernel.HasComponent(serviceType))
+                if (!this.container.Kernel.HasComponent(serviceType))
+                {
                     return new object[0];
+                }
 
-                return _container.ResolveAll(serviceType).Cast<object>();
+                return this.container.ResolveAll(serviceType).Cast<object>();
             }
         }
 
         public class WindsorDependencyScope : IDependencyScope
         {
-            protected readonly IWindsorContainer _container;
-            private ConcurrentBag<object> _toBeReleased = new ConcurrentBag<object>();
+            private readonly IWindsorContainer container;
+            private ConcurrentBag<object> toBeReleased = new ConcurrentBag<object>();
 
             public WindsorDependencyScope(IWindsorContainer container)
             {
-                _container = container;
+                this.container = container;
             }
 
             public void Dispose()
             {
-                if (_toBeReleased != null)
+                if (this.toBeReleased != null)
                 {
-                    foreach (var o in _toBeReleased)
+                    foreach (var o in this.toBeReleased)
                     {
-                        _container.Release(o);
+                        this.container.Release(o);
                     }
                 }
 
-                _toBeReleased = null;
+                this.toBeReleased = null;
             }
 
             public object GetService(Type serviceType)
             {
-                if (!_container.Kernel.HasComponent(serviceType))
+                if (!this.container.Kernel.HasComponent(serviceType))
+                {
                     return null;
+                }
 
-                var resolved = _container.Resolve(serviceType);
+                var resolved = this.container.Resolve(serviceType);
                 if (resolved != null)
-                    _toBeReleased.Add(resolved);
+                {
+                    this.toBeReleased.Add(resolved);
+                }
 
                 return resolved;
             }
 
             public IEnumerable<object> GetServices(Type serviceType)
             {
-                if (!_container.Kernel.HasComponent(serviceType))
+                if (!this.container.Kernel.HasComponent(serviceType))
+                {
                     return new object[0];
+                }
 
-                var allResolved = _container.ResolveAll(serviceType).Cast<object>();
+                var allResolved = this.container.ResolveAll(serviceType).Cast<object>();
                 if (allResolved != null)
                 {
-                    allResolved.ToList().ForEach(x => _toBeReleased.Add(x));
+                    allResolved.ToList().ForEach(x => this.toBeReleased.Add(x));
                 }
 
                 return allResolved;

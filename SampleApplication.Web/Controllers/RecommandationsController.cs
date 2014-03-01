@@ -23,7 +23,7 @@ namespace SampleApplication.Web.Controllers
         [Route("")]
         public IHttpActionResult GetList()
         {
-            return Ok(this.dataProvider.GetRecommandations());
+            return this.Ok(this.dataProvider.GetRecommandations());
         }
     }
 }
