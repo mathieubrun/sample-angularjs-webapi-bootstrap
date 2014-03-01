@@ -105,7 +105,7 @@
                         // act
                         scope.edit();
                     });
-                    
+
                     it('must set model.IsEditing to true', function () {
                         // assert
                         expect(scope.model.IsEditing).toBe(true);
