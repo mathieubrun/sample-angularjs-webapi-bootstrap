@@ -36,6 +36,7 @@
       "describe": false,
       "module": false,
       "expect": false,
+      "spyOn": false,
       "_": false,
       "angular": false,
       "jQuery": false
