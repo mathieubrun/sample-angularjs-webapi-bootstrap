@@ -149,6 +149,10 @@
     <Content Include="App\Angular\Loader\loader.spec.js" />
     <Content Include="App\Angular\Services\services.js" />
     <Content Include="App\Angular\Services\index.html" />
+    <Content Include="App\Angular\Tests\lib\blanket\blanket.js" />
+    <Content Include="App\Angular\Tests\lib\blanket\console_runner.js" />
+    <Content Include="App\Angular\Tests\lib\blanket\jasmine-blanket.js" />
+    <Content Include="App\Angular\Tests\boot.js" />
     <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\boot.js" />
     <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\console.js" />
     <Content Include="App\Angular\Tests\lib\jasmine-2.0.0\jasmine-html.js" />
