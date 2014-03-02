@@ -34,7 +34,8 @@ namespace SampleApplication.Web
                .Include("~/app/angular/caching/cacheInterceptor.spec.js")
                .Include("~/app/angular/data/data.spec.js")
                .Include("~/app/angular/loader/loader.spec.js")
-               .Include("~/app/angular/loader/loader.directive.spec.js"));
+               .Include("~/app/angular/loader/loader.directive.spec.js")
+               .Include("~/app/angular/services/services.spec.js"));
 
             bundles.Add(new StyleBundle("~/css/common")
                 .Include("~/content/bootstrap.css")
