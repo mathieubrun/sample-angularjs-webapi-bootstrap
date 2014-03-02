@@ -25,7 +25,7 @@ namespace SampleApplication.Web
                .Include("~/app/angular/caching/cacheInterceptor.js")
                .Include("~/app/angular/data/data.js")
                .Include("~/app/angular/loader/loader.js")
-               .Include("~/app/angular/loader/loader.directivesjs")
+               .Include("~/app/angular/loader/loader.directive.js")
                .Include("~/app/angular/services/services.js"));
 
             bundles.Add(new ScriptBundle("~/app/sampleApplicationTests")
