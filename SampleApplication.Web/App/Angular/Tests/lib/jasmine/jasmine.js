@@ -1,3 +1,4 @@
+/// <reference path="jasmine.js" />
 /*
 Copyright (c) 2008-2013 Pivotal Labs
 
