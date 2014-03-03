@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('SampleApplication.Angular.Loader', ['SampleApplication.Common']);
+    angular.module('SampleApplication.Angular.Loader', ['ngResource']);
 
-    angular.module('SampleApplication.Angular.Loader', ['ngResource'])
+    angular.module('SampleApplication.Angular.Loader')
         .controller('LoaderController', ['$scope', '$resource', function ($scope, $resource) {
             var clientsDelayed = $resource("api/clients/delay"),
                 clientsError = $resource("api/clients/error/:error");

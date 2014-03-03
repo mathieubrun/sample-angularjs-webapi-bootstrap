@@ -46,7 +46,7 @@
 
                 it('must display content immediately', function () {
                     // assert
-                    expect(element.innerText).toBe(expectedContent);
+                    expect(element.innerText).toContain(expectedContent);
                 });
 
                 it('scope.status must be 200', function () {
@@ -72,7 +72,7 @@
 
                 it('must display loading message', function () {
                     // assert
-                    expect(element.innerText).toBe("Loading");
+                    expect(element.innerText).toContain("Loading");
                 });
 
                 it('scope.status must be 0', function () {
@@ -92,7 +92,7 @@
 
                     it('must display content ', function () {
                         // assert
-                        expect(element.innerText).toBe(expectedContent);
+                        expect(element.innerText).toContain(expectedContent);
                     });
 
                     it('scope.status must be 200', function () {
@@ -115,7 +115,7 @@
 
                     it('must display content ', function () {
                         // assert
-                        expect(element.innerText).toBe("Error from server : " + errorCode);
+                        expect(element.innerText).toContain("Error from server : " + errorCode);
                     });
 
                     it('scope.status must be errorCode', function () {

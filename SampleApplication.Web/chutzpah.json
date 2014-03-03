@@ -1,0 +1,18 @@
+﻿{
+    "Framework": "jasmine",
+	"FrameworkVersion": "2",
+
+	"References": [
+		{ "Path": "Scripts/underscore.js" },
+		{ "Path": "Scripts/jquery-2.1.0.js" },
+		{ "Path": "Scripts/angular.js" },
+		{ "Path": "Scripts/angular-mocks.js" },
+		{ "Path": "Scripts/angular-route.js" },
+		{ "Path": "Scripts/angular-resource.js" },
+		{ "Path": "App/Angular/Data/data.js" },
+		{ "Path": "App/Angular/Loader/loader.js" },
+		{ "Path": "App/Angular/Loader/loader.directive.js" },
+		{ "Path": "App/Angular/Services/services.js" }
+    ],
+
+}
