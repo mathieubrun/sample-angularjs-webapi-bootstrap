@@ -10,17 +10,18 @@
             };
         }])
         .directive('showSource', ['$resource', function ($resource) {
-
             return {
-                templateUrl: '/app/common/source.html',
+                template: '<pre>{{file.Content}}</pre>',
                 restrict: 'EA',
                 replace: true,
-                scope: {
-                },
                 link: function (scope, elem, attrs) {
                     var res = $resource('/api/source');
 
-                    scope.file = res.get({ path: attrs.url });
+                    attrs.$observe('url', function (value) {
+                        if (value) {
+                            scope.file = res.get({ path: value });
+                        }
+                    });
                 }
             };
         }]);
