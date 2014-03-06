@@ -15,7 +15,8 @@
         'SampleApplication.Config',
         'SampleApplication.Angular.Data',
         'SampleApplication.Angular.Services',
-        'SampleApplication.Angular.Loader'
+        'SampleApplication.Angular.Loader',
+        'SampleApplication.SignalR.Chat'
     ])
         .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
@@ -65,18 +66,18 @@
             );
 
             $routeProvider.when(
-                '/webapi/filters',
+                '/angular/loader',
                 {
-                    templateUrl: '/app/webapi/filters.html',
-                    controller: ['$scope', '$http', function ($scope, $http) {
-                        $scope.get = function (url) {
-                            $http.get(url);
-                        };
+                    templateUrl: '/app/angular/loader/index.html',
+                    controller: 'LoaderController'
+                }
+            );
 
-                        $scope.post = function (url, data) {
-                            $http.post(url, data);
-                        };
-                    }]
+            $routeProvider.when(
+                '/signalr/chat',
+                {
+                    templateUrl: '/app/signalr/chat.html',
+                    controller: 'ChatController'
                 }
             );
 

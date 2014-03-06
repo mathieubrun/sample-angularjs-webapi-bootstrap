@@ -1,0 +1,13 @@
+﻿<div sample-menu></div>
+
+<div class="container">
+    <h1>SignalR chat</h1>
+
+    <div class="container">
+        <input type="text" ng-model="message" />
+        <button type="submit" ng-click="send(message)">Send</button>
+        <ul id="discussion">
+            <li ng-repeat="msg in messages">{{msg.name}} : {{msg.message}}</li>
+        </ul>
+    </div>
+</div>

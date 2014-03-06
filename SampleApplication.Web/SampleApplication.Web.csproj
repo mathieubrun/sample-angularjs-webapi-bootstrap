@@ -137,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\SignalRConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="App_Start\WindsorConfig.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
@@ -159,6 +162,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Data\Model\Client.cs" />
+    <Compile Include="Hubs\MessagesHub.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\MessageModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +199,8 @@
     <Content Include="App\Angular\Loader\loader.html" />
     <Content Include="App\Common\menu.html" />
     <Content Include="App\index.html" />
+    <Content Include="App\SignalR\chat.html" />
+    <Content Include="App\SignalR\chat.js" />
     <Content Include="App\WebApi\filters.html" />
     <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap-theme.css" />

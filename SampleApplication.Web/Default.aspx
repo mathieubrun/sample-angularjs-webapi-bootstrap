@@ -13,6 +13,7 @@
     </div>
 
     <%: Scripts.Render("~/app/common") %>
+    <script src="/signalr/hubs"></script>
     <%: Scripts.Render("~/app/sampleApplication") %>
 
     <script type="text/javascript">
