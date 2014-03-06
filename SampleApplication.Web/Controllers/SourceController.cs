@@ -13,6 +13,7 @@ namespace SampleApplication.Web.Controllers
     [RoutePrefix("api/source")]
     public class SourceController : ApiController
     {
+        [HttpGet]
         [Route("")]
         public IHttpActionResult GetSource(string path)
         {

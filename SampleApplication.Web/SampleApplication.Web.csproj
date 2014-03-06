@@ -159,7 +159,7 @@
     <Content Include="App\Angular\Tests\lib\jasmine\jasmine.css" />
     <Content Include="App\Angular\Tests\lib\jasmine\jasmine.js" />
     <Content Include="App\Angular\Tests\lib\jasmine\jasmine_favicon.png" />
-    <Content Include="App\Common\source.html" />
+    <Content Include="App\Common\common.spec.js" />
     <Content Include="App\Angular\Loader\loader.directive.js" />
     <Content Include="App\app.js" />
     <Content Include="App\Angular\Caching\cacheInterceptor.js" />
