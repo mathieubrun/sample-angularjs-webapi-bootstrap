@@ -5,16 +5,18 @@
         .service('signalRSvc', ['$rootScope', function ($rootScope) {
 
             var connection = jQuery.hubConnection(),
-                contosoChatHubProxy = connection.createHubProxy('messagesHub'),
-                sendMessage = function (message) {
-                    contosoChatHubProxy.invoke('send', 'test', message);
+                messagesHubProxy = connection.createHubProxy('messagesHub'),
+                sendMessage = function (name, message) {
+                    messagesHubProxy.invoke('send', name, message);
                 };
 
-            contosoChatHubProxy.on('addNewMessageToPage', function (name, message) {
-                $rootScope.$emit("addNewMessageToPage", { name: name, message: message });
+            messagesHubProxy.on('addNewMessageToPage', function (userName, message) {
+                $rootScope.$emit('addNewMessageToPage', { name: userName, message: message });
             });
 
-            connection.start();
+            connection.start()
+                .done(function () { console.log('Now connected, connection ID=' + connection.id); })
+                .fail(function () { console.log('Could not connect'); });
 
             return {
                 sendMessage: sendMessage
@@ -25,7 +27,7 @@
             $scope.messages = [];
 
             $scope.send = function (message) {
-                signalRSvc.sendMessage(message);
+                signalRSvc.sendMessage('test', message);
             };
 
             $rootScope.$on("addNewMessageToPage", function (e, msg) {
