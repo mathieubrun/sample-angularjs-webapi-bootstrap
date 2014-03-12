@@ -2,6 +2,17 @@
     'use strict';
 
     angular.module('SampleApplication.SignalR.Chat', ['ngResource', 'ngRoute'])
+        .config(['$provide', function ($provide) {
+            $provide.decorator('$rootScope', ['$delegate', function ($delegate) {
+
+                $delegate.constructor.prototype.$onRootScope = function (name, listener) {
+                    var unsubscribe = $delegate.$on(name, listener);
+                    this.$on('$destroy', unsubscribe);
+                };
+
+                return $delegate;
+            }]);
+        }])
         .service('signalRSvc', ['$rootScope', function ($rootScope) {
 
             var connection = jQuery.hubConnection(),
@@ -22,7 +33,7 @@
                 sendMessage: sendMessage
             };
         }])
-        .controller('ChatController', ['$scope', '$rootScope', 'signalRSvc', function ($scope, $rootScope, signalRSvc) {
+        .controller('ChatController', ['$scope', 'signalRSvc', function ($scope, signalRSvc) {
 
             $scope.messages = [];
 
@@ -30,7 +41,7 @@
                 signalRSvc.sendMessage('test', message);
             };
 
-            $rootScope.$on("addNewMessageToPage", function (e, msg) {
+            $scope.$onRootScope("addNewMessageToPage", function (e, msg) {
                 $scope.$apply(function () {
                     $scope.messages.push(msg);
                 });
