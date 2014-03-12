@@ -39,7 +39,8 @@
       "spyOn": false,
       "_": false,
       "angular": false,
-      "jQuery": false
+      "jQuery": false,
+      "console": false
     },
     "nomen": true
   },
