@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿<%@ Page Language="C#" %><!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,9 +11,11 @@
     <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
     <script type="text/javascript" src="lib/jasmine/boot.js"></script>
 
+    <% if(Request.QueryString["cover"] == "true" ) { %>
     <script type="text/javascript" src="lib/blanket/blanket.js"> </script>
     <script type="text/javascript" src="lib/blanket/jasmine-blanket.js"></script>
     <script type="text/javascript" src="lib/blanket/console_runner.js"></script>
+    <% } %>
 
     <!-- include source files here... -->
     <%: Scripts.Render("~/app/common")%>
@@ -25,5 +27,11 @@
 </head>
 
 <body>
+    <% if(Request.QueryString["cover"] == "true" ) { %>
+    <h1><a href="?cover=false">Disable code coverage</a></h1>
+    <% } else { %>
+    <h1><a href="?cover=true">Enable code coverage</a></h1>
+    <% } %>
+    
 </body>
 </html>
