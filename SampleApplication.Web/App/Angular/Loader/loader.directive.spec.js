@@ -15,6 +15,8 @@
             beforeEach(inject(function (_$rootScope_, _$httpBackend_, _$compile_) {
                 // simulate a server for serving the directive template
                 $httpBackend = _$httpBackend_;
+
+                // this is a bit ugl
                 $httpBackend.when('GET', 'app/angular/loader/loader.html').respond('<div><div ng-if="status!=200" ng-switch="status"><div ng-switch-when="0"><span><i class="fa fa-2x fa-spin fa-spinner"></i>Loading</span></div><div ng-switch-default><span>Error from server : {{status}}</span></div></div><div ng-if="status==200" ng-transclude></div></div>');
 
                 // the scope that will be linked to the directive DOM

@@ -24,6 +24,7 @@ namespace SampleApplication.Web
                .Include("~/app/common/common.js")
                .Include("~/app/angular/caching/cacheInterceptor.js")
                .Include("~/app/angular/data/data.js")
+               .Include("~/app/angular/directives/directives.js")
                .Include("~/app/angular/loader/loader.js")
                .Include("~/app/angular/loader/loader.directive.js")
                .Include("~/app/angular/services/services.js"));
@@ -33,6 +34,7 @@ namespace SampleApplication.Web
                .Include("~/app/common/common.spec.js")
                .Include("~/app/angular/caching/cacheInterceptor.spec.js")
                .Include("~/app/angular/data/data.spec.js")
+               .Include("~/app/angular/directives/directives.spec.js")
                .Include("~/app/angular/loader/loader.spec.js")
                .Include("~/app/angular/loader/loader.directive.spec.js")
                .Include("~/app/angular/services/services.spec.js"));

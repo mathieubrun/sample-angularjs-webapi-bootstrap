@@ -145,6 +145,9 @@
     <Content Include="App\Angular\Data\data.spec.js" />
     <Content Include="App\Angular\Data\detail.view.html" />
     <Content Include="App\Angular\Data\detail.edit.html" />
+    <Content Include="App\Angular\Directives\directives.js" />
+    <Content Include="App\Angular\Directives\directives.spec.js" />
+    <Content Include="App\Angular\Directives\index.html" />
     <Content Include="App\Angular\Loader\loader.directive.spec.js" />
     <Content Include="App\Angular\Loader\loader.spec.js" />
     <Content Include="App\Angular\Services\services.spec.js" />
@@ -295,6 +298,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Scripts\underscore.min.map" />
+    <None Include="tt.markdown" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

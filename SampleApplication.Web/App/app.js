@@ -14,6 +14,7 @@
         'SampleApplication.Common',
         'SampleApplication.Config',
         'SampleApplication.Angular.Data',
+        'SampleApplication.Angular.Directives',
         'SampleApplication.Angular.Services',
         'SampleApplication.Angular.Loader'
     ])
@@ -30,6 +31,14 @@
                 '/angular/caching',
                 {
                     templateUrl: '/app/angular/caching/index.html'
+                }
+            );
+
+            $routeProvider.when(
+                '/angular/directives',
+                {
+                    controller: 'DirectivesController',
+                    templateUrl: '/app/angular/directives/index.html'
                 }
             );
 
