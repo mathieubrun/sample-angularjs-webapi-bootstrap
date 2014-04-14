@@ -3,6 +3,35 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
+            Set scope.text value : <input ng-model="text" type="text" /> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Scoping</h2>
+            <p>This is bound to scope.text : <em>{{text}}</em></p>
+            <p no-scoping></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Isolated scoping</h2>
+            <p>This is bound to scope.text : <em>{{text}}</em></p>
+            <p scoping></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Transclusion</h2>
+            <p>This is bound to scope.text : <em>{{text}}</em></p>
+            <p transclusion>
+                <p>This will display parent scope.text : <em>{{text}}</em></p>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Binding</h2>
             <input ng-model="start" type="number" />
             <div numbers-simple start="start" count="10" on-count="count(value)">
             </div>

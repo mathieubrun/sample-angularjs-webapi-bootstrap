@@ -3,10 +3,25 @@
 
     angular.module('SampleApplication.Angular.Directives', [])
         .controller('DirectivesController', ['$scope', function ($scope) {
-            $scope.messages = [];
+            $scope.text = "from outside directive";
 
             $scope.count = function (value) {
                 console.log("Counted " + value);
+            };
+        }])
+        .directive('noScoping', [function () {
+            return {
+                template: '<p>From directive (no scope) : <em>{{text}}</em></p>'
+            };
+        }])
+        .directive('scoping', [function () {
+            return {
+                template: '<p>From directive (isolated scope) : <em>{{text}}</em></p>',
+                scope: {
+                },
+                link: function (scope, elem, attrs, controller, transcludeFn) {
+                    scope.text = "set inside directive"
+                }
             };
         }])
         .directive('numbersSimple', [function () {
@@ -40,6 +55,17 @@
                             }
                         }
                     });
+                }
+            };
+        }])
+        .directive('transclusion', [function () {
+            return {
+                transclude: true,
+                scope: {
+                },
+                template: '<p>From directive (isolated scope) : <em>{{text}}</em><p ng-transclude></p>',
+                link: function (scope, elem, attrs, controller, transcludeFn) {
+                    scope.text = "set inside directive"
                 }
             };
         }]);
