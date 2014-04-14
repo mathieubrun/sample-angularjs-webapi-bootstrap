@@ -63,7 +63,9 @@
                 transclude: true,
                 scope: {
                 },
-                template: '<p>From directive (isolated scope) : <em>{{text}}</em><p ng-transclude></p>',
+                template: '<p>From directive (isolated scope) : <em>{{text}}</em>'
+                            + '<p ng-transclude></p>'
+                        + '</p>',
                 link: function (scope, elem, attrs, controller, transcludeFn) {
                     scope.text = "set inside directive"
                 }

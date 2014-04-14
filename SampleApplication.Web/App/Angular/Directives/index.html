@@ -11,6 +11,7 @@
             <h2>Scoping</h2>
             <p>This is bound to scope.text : <em>{{text}}</em></p>
             <p no-scoping></p>
+            <p><strong>Scope is shared</strong></p>
         </div>
     </div>
     <div class="row">
@@ -18,6 +19,7 @@
             <h2>Isolated scoping</h2>
             <p>This is bound to scope.text : <em>{{text}}</em></p>
             <p scoping></p>
+            <p><strong>Directive has its own scope inside its template</strong></p>
         </div>
     </div>
     <div class="row">
@@ -27,6 +29,7 @@
             <p transclusion>
                 <p>This will display parent scope.text : <em>{{text}}</em></p>
             </p>
+            <p><strong>Directive has its own scope inside its template, and parent scope is back inside transcluded element</strong></p>
         </div>
     </div>
     <div class="row">
