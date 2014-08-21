@@ -2,8 +2,6 @@
 ## Eclipse
 #################
 
-SampleApplication.Web/Properties/AssemblyInfo.cs
-
 *.pydevproject
 .project
 .metadata
