@@ -1,4 +1,4 @@
-﻿using Cogimator.SampleDataGenerator;
+﻿using SampleDataGenerator;
 using SampleApplication.Web.Data.Models;
 using System;
 using System.Collections.Generic;

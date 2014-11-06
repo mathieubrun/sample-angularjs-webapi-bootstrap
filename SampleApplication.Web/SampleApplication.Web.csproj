@@ -58,14 +58,13 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.3.2.1\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Cogimator.SampleDataGenerator, Version=0.30.0.25, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Cogimator.SampleDataGenerator.0.30.0.25\lib\net45\Cogimator.SampleDataGenerator.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SampleDataGenerator">
+      <HintPath>..\packages\SampleDataGenerator.1.0.6\lib\net45\SampleDataGenerator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -298,7 +297,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Scripts\underscore.min.map" />
-    <None Include="tt.markdown" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
