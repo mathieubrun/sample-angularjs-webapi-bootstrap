@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Scripts\checklistModel.directive.js" />
     <Content Include="App\Angular\Data\data.spec.js" />
     <Content Include="App\Angular\Data\detail.view.html" />
     <Content Include="App\Angular\Data\detail.edit.html" />

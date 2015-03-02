@@ -1,4 +1,7 @@
-﻿using System.Web.Optimization;
+﻿using System;
+using System.IO;
+using System.Web.Hosting;
+using System.Web.Optimization;
 
 namespace SampleApplication.Web
 {
@@ -13,6 +16,7 @@ namespace SampleApplication.Web
                 .Include("~/Scripts/angular.js")
                 .Include("~/Scripts/angular-resource.js")
                 .Include("~/Scripts/angular-route.js")
+                .Include("~/Scripts/checklistModel.directive.js")
                 .Include("~/Scripts/ui-date.js")
                 .Include("~/Scripts/ui-bootstrap-{version}.js"));
 
@@ -20,14 +24,7 @@ namespace SampleApplication.Web
                 .Include("~/Scripts/angular-mocks.js"));
 
             bundles.Add(new ScriptBundle("~/app/sampleApplication")
-               .Include("~/app/app.js")
-               .Include("~/app/common/common.js")
-               .Include("~/app/angular/caching/cacheInterceptor.js")
-               .Include("~/app/angular/data/data.js")
-               .Include("~/app/angular/directives/directives.js")
-               .Include("~/app/angular/loader/loader.js")
-               .Include("~/app/angular/loader/loader.directive.js")
-               .Include("~/app/angular/services/services.js"));
+               .IncludeDirectory("~/app/", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/app/sampleApplicationTests")
                .Include("~/app/app.spec.js")

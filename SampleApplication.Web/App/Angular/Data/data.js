@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('SampleApplication.Angular.Data', ['ngResource', 'ngRoute'])
+    angular.module('SampleApplication.Angular.Data', ['ngResource', 'ngRoute', 'checklist-model'])
         .controller('DatasController', ['$scope', '$resource', function ($scope, $resource) {
             var clients = $resource("api/clients");
 
@@ -17,15 +17,7 @@
 
             $scope.recommandations = recommandations.query();
 
-            $scope.data = clients.get({ id: $routeParams.id }, function (success) {
-                $scope.recommandations.$promise.then(function () {
-                    _.each(success.Recommandations, function (reco) {
-                        _.find($scope.recommandations, function (r) {
-                            return r.Id === reco.Id;
-                        }).Checked = true;
-                    });
-                });
-            });
+            $scope.data = clients.get({ id: $routeParams.id });
 
             $scope.newData = {};
 
@@ -37,12 +29,6 @@
                 $scope.model.IsEditing = true;
                 $scope.newData = angular.extend({}, $scope.data);
             };
-
-            $scope.$watch('recommandations', function (newval, oldval) {
-                if (newval !== oldval) {
-                    $scope.newData.Recommandations = _.filter($scope.recommandations, function (r) { return r.Checked; });
-                }
-            }, true);
 
             $scope.save = function () {
                 clients.save($scope.newData, function (res) {
