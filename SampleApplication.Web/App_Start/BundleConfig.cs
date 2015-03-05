@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Optimization;
 
@@ -23,18 +26,11 @@ namespace SampleApplication.Web
             bundles.Add(new ScriptBundle("~/app/commonTests")
                 .Include("~/Scripts/angular-mocks.js"));
 
-            bundles.Add(new ScriptBundle("~/app/sampleApplication")
-               .IncludeDirectory("~/app/", "*.js", true));
+            bundles.Add(new FilterBundle("~/app/sampleApplication", "spec.js") { Orderer = new UnderscoreOrderer() }
+               .IncludeDirectory("~/app/angular", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/app/sampleApplicationTests")
-               .Include("~/app/app.spec.js")
-               .Include("~/app/common/common.spec.js")
-               .Include("~/app/angular/caching/cacheInterceptor.spec.js")
-               .Include("~/app/angular/data/data.spec.js")
-               .Include("~/app/angular/directives/directives.spec.js")
-               .Include("~/app/angular/loader/loader.spec.js")
-               .Include("~/app/angular/loader/loader.directive.spec.js")
-               .Include("~/app/angular/services/services.spec.js"));
+               .IncludeDirectory("~/app/angular", "*.spec.js", true));
 
             bundles.Add(new StyleBundle("~/css/common")
                 .Include("~/content/bootstrap.css")
@@ -42,6 +38,53 @@ namespace SampleApplication.Web
                 .Include("~/content/font-awesome.css")
                 .Include("~/content/themes/base/jquery-ui.css")
                 .Include("~/content/app.css"));
+        }
+
+        public sealed class UnderscoreOrderer : IBundleOrderer
+        {
+            public IEnumerable<BundleFile> OrderFiles(BundleContext context, IEnumerable<BundleFile> files)
+            {
+                return files.OrderBy(x => !string.Equals(x.VirtualFile.Name, "_.js"));
+            }
+        }
+
+        public class FilterBundle : ScriptBundle
+        {
+            private readonly string filter;
+
+            public FilterBundle(string path, string filter) : base(path) {
+                Orderer = new UnderscoreOrderer();
+
+                this.filter = filter;
+            }
+
+            public override IEnumerable<BundleFile> EnumerateFiles(BundleContext context)
+            {
+                var files = base.EnumerateFiles(context);
+
+                return files.Where(x => !x.IncludedVirtualPath.EndsWith(filter, StringComparison.OrdinalIgnoreCase));
+            }
+
+        }
+    }
+
+    public static class BundleExtentions
+    {
+        public static Bundle IncludeDirectoryWithExclusion(this Bundle bundle, string directoryVirtualPath, string searchPattern, string excludePattern)
+        {
+            var folderPath = HostingEnvironment.MapPath(directoryVirtualPath);
+
+            var allFiles = Directory.GetFiles(folderPath, searchPattern, SearchOption.AllDirectories);
+            var filesToExclude = Directory.GetFiles(folderPath, excludePattern, SearchOption.AllDirectories);
+
+            var wantedFiles = allFiles.Except(filesToExclude);
+
+            foreach (var file in allFiles)
+            {
+                bundle.Include(directoryVirtualPath + "/" + file);
+            }
+
+            return bundle;
         }
     }
 }

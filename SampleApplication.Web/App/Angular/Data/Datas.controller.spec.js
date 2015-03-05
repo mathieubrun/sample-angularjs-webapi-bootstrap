@@ -1,12 +1,13 @@
 ﻿(function () {
     'use strict';
 
-    describe('In module SampleApplication.Angular.Loader', function () {
+    describe('In module SampleApplication.Angular.Data module', function () {
 
-        beforeEach(module('SampleApplication.Angular.Loader'));
+        // this module need to be loaded
+        // it is important to load just this module, so if it is missing dependencies, they will be caught in the following tests
+        beforeEach(module('SampleApplication.Angular.Data'));
 
-        // Load the myApp module, which cont
-        describe('LoaderController', function () {
+        describe('DatasController', function () {
 
             var scope, $httpBackend, createController;
 
@@ -15,15 +16,14 @@
                 scope = _$rootScope_.$new();
 
                 createController = function () {
-                    return _$controller_('LoaderController', { '$scope': scope });
+                    return _$controller_('DatasController', { '$scope': scope });
                 };
             }));
 
-            it('must call api/clients/delay and api/clients/delay/error/:error on creation', function () {
+            it('must call api/clients on creation', function () {
                 // arrange
-                $httpBackend.expectGET('api/clients/delay').respond([]);
-                $httpBackend.expectGET('api/clients/error/400').respond([]);
-                $httpBackend.expectGET('api/clients/error/500').respond([]);
+                // the expectGET method will ensure that the mocked backend receives the request 
+                $httpBackend.expectGET('api/clients').respond([]);
 
                 // act
                 createController();
@@ -35,7 +35,6 @@
             afterEach(function () {
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
-                scope.$destroy();
             });
         });
     });
